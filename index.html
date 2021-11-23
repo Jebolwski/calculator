@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Calculator</title>
+    <link rel="shortcut icon" href="calc.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Basic Calculator</h1>
+    <div class="container">
+
+        <table border="0">
+            <tr>
+                <td>
+                    <h3>1st Number:</h3>
+                </td>
+                <td>
+                    <input type="number" id="firstNumber" placeholder="Please enter a number">
+                </td>
+
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <select id="operator">
+                      <option value="select">Select an operator</option>
+                      <option value="+">Add</option>
+                      <option value="-">Subtract</option>
+                      <option value="*">Multiple</option>
+                      <option value="/">Divide</option>
+                      <option value="%">Remainder</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h3>2nd Number:</h3>
+                </td>
+                <td>
+                    <input type="number" id="secondNumber" placeholder="Please enter another number">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button id="btn">Calculate</button>
+                </td>
+            </tr>
+            <tr>
+                <td id="empty" colspan="2 ">
+                    <div id="result"></div>
+                </td>
+            </tr>
+
+
+        </table>
+        <div class="form"><a href="form.html">Form Validation</a></div>
+    </div>
+    <script src="script.js "></script>
+</body>
+
+</html>

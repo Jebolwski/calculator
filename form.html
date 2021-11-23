@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <link rel="shortcut icon" href="form.png" type="image/x-icon">
+
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            font-size: 30px;
+            animation-name: h1;
+            animation-duration: 0.6s;
+        }
+        
+        .container {
+            width: auto;
+            height: auto;
+            margin: 0 auto;
+        }
+        
+        header {
+            width: auto;
+            height: 75px;
+            background: linear-gradient( 360deg, rgba(198, 198, 198, 1) 0%, rgba(255, 255, 255, 1) 100%);
+            color: black;
+            text-align: center;
+            font: 50px Unispace;
+            padding: 20px 0 0 0;
+        }
+        
+        nav {
+            width: auto;
+            height: 36px;
+            margin: 3px 0 0 0;
+            background: linear-gradient( 0deg, rgba(227, 227, 227, 1) 0%, rgba(255, 255, 255, 1) 100%);
+            color: black;
+            font: 15px Unispace;
+            text-align: left;
+            border-radius: 3px;
+        }
+        
+        nav ul li {
+            float: left;
+            text-align: center;
+            padding: 9px 0 0 130px;
+        }
+        
+        nav ul li a {
+            text-align: center;
+        }
+        
+        main {
+            width: auto;
+            height: 900px;
+            background: linear-gradient( 180deg, rgba(227, 227, 227, 1) 0%, rgba(255, 255, 255, 1) 100%);
+            margin: 3px 0 0 0;
+            border-radius: 3px;
+        }
+        
+        footer {
+            width: auto;
+            height: 50px;
+            background: linear-gradient( 0deg, rgba(227, 227, 227, 1) 0%, rgba(255, 255, 255, 1) 100%);
+            margin: 3px 0 0 0;
+            border-radius: 3px;
+            text-align: center;
+            text-decoration: none;
+            color: black;
+            font: 15px Unispace;
+            line-height: 50px;
+        }
+        
+        .header1 {
+            width: 100px;
+            height: 100px;
+            background: url("../images/pls.png") no-repeat;
+            position: relative;
+            top: -83px;
+            left: 85px;
+        }
+        
+        nav ul li a {
+            color: black;
+            text-decoration: none;
+            transition: 0.5s;
+        }
+        
+        nav ul li a:hover {
+            color: rgb(129, 129, 129);
+            transition: 0.5s;
+        }
+        
+        header a {
+            text-decoration: none;
+            color: black;
+        }
+        
+        .photo {
+            width: 150px;
+            height: 217px;
+            margin: 20px 0 0 20px;
+            background: url("mike.jpg");
+            border-radius: 15px;
+        }
+        
+        .top {
+            width: 680px;
+            height: 300px;
+            margin: 0 0 0 8px;
+            line-height: 21px;
+        }
+        
+        .form {
+            width: 900px;
+            height: 535px;
+        }
+        
+        #button {
+            width: 80px;
+            height: 27px;
+            color: white;
+            background: black;
+            border: none;
+            font: 17px tahoma;
+            margin: 0 0 0 250px;
+            border-radius: 6px;
+        }
+        
+        #button:hover {
+            background: rgb(61, 61, 61);
+            border-radius: 6px;
+            transition: 0.4s;
+        }
+        
+        .inpt {
+            height: 50px;
+            border: none;
+            border-bottom: solid 1px ghostblack;
+            background: transparent;
+        }
+        
+        .leftable {
+            font-family: "Roboto", sans-serif;
+            font-size: 20px;
+            text-align: center;
+        }
+        
+        #cname,
+        #yname,
+        #csurname,
+        #ysurname,
+        #cemail,
+        #yemail,
+        #cpsw,
+        #ypsw,
+        #cpswchck,
+        #ypswchck,
+        #cfvfighter,
+        #yfvfighter,
+        #cfvevent,
+        #yfvevent {
+            visibility: hidden;
+        }
+        
+        #tdname,
+        #tdsurname,
+        #tdemail,
+        #tdpsw,
+        #tdpswchck,
+        #tdfvfighter,
+        #tdfvevent {
+            color: red;
+            font-family: "Roboto", sans-serif;
+            text-align: left;
+        }
+        
+        * {
+            scrollbar-width: auto;
+            scrollbar-color: #404040 #ffffff;
+        }
+        
+        *::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        *::-webkit-scrollbar-track {
+            background: #ffffff;
+        }
+        
+        *::-webkit-scrollbar-thumb {
+            background-color: #404040;
+            border-radius: 10px;
+            border: 3px none #ffffff;
+        }
+        
+        input {
+            width: 60%;
+            height: 21px;
+            font-size: 16px;
+            font-family: "Roboto", sans-serif;
+            outline: none;
+            z-index: 0;
+            border: none;
+            border-bottom: solid 1px black;
+            background: transparent;
+        }
+        
+        .inputt {
+            position: absolute;
+        }
+        
+        #Gender_0 {
+            width: 15px;
+            height: 15px;
+            margin-left: 20px;
+        }
+        
+        #Gender_1 {
+            width: 15px;
+            height: 15px;
+            margin-left: 20px;
+            margin-top: 4px;
+        }
+        
+        .fa-times-circle {
+            color: red;
+            position: absolute;
+            margin: 6px 50px 0 0;
+            z-index: 1;
+            width: 20px;
+        }
+        
+        .fa-check-circle {
+            color: green;
+            position: absolute;
+            margin: 6px 50px 0 0;
+            z-index: 1;
+        }
+        
+        .container {
+            background-color: rgb(245, 245, 245);
+            border-radius: 5px;
+            width: 60%;
+            border: solid 1px black;
+            display: grid;
+            place-items: center;
+            animation-name: container;
+            animation-duration: 0.6s;
+        }
+        
+        #signin {
+            width: 40%;
+            background-color: rgb(83, 83, 83);
+            color: white;
+            border: solid 1px gray;
+            border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            -ms-border-radius: 5px;
+            -o-border-radius: 5px;
+            transition: 0.5s;
+            -webkit-transition: 0.5s;
+            -moz-transition: 0.5s;
+            -ms-transition: 0.5s;
+            -o-transition: 0.5s;
+        }
+        
+        #signin:hover {
+            background-color: grey;
+            color: white;
+            border: solid 1px gray;
+            border-radius: 5px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            -ms-border-radius: 5px;
+            -o-border-radius: 5px;
+            transition: 0.5s;
+            -webkit-transition: 0.5s;
+            -moz-transition: 0.5s;
+            -ms-transition: 0.5s;
+            -o-transition: 0.5s;
+        }
+        
+        tr>td {
+            color: black;
+        }
+        
+        #hah {
+            margin-top: 10px;
+        }
+        
+        a {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            text-decoration: none;
+            transition: 0.4s;
+            color: black;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+            color: gray;
+            transition: 0.4s;
+        }
+        
+        @keyframes container {
+            from {
+                margin-top: 500px;
+                transform: rotateZ(40deg);
+                opacity: 0.4;
+            }
+            to {
+                margin-top: 0;
+                opacity: 1;
+            }
+        }
+        
+        @keyframes h1 {
+            from {
+                margin-top: -100px;
+            }
+            to {
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Form Validation</h1>
+    <div class="container">
+        <table border="0" id="hah">
+            <tbody>
+                <tr>
+                    <td width="40%" height="78" class="leftable">Name</td>
+                    <td width="40%">
+                        <input id="inptname" type="text" /><i class="fas fa-times-circle fa-lg" id="cname"></i
+                  ><i class="fas fa-check-circle fa-lg" id="yname"></i>
+                    </td>
+                </tr>
+                <tr height="23">
+                    <td class="leftable"></td>
+                    <td id="tdname"></td>
+                </tr>
+                <tr height="78">
+                    <td height="39" class="leftable">Surname</td>
+                    <td width="40%">
+                        <input id="inptsurname" type="text" /><i class="fas fa-times-circle fa-lg" id="csurname"></i
+                  ><i class="fas fa-check-circle fa-lg" id="ysurname"></i>
+                    </td>
+                </tr>
+                <tr height="10">
+                    <td class="leftable"></td>
+                    <td id="tdsurname" height="28"></td>
+                </tr>
+                <tr height="78">
+                    <td class="leftable">Gender</td>
+                    <td width="40%">
+                        <p>
+                            <label>
+                      <input
+                        type="radio"
+                        name="Gender"
+                        value="male"
+                        id="Gender_0"
+                        checked
+                      />Male</label
+                    >
+                    <br />
+                    <label
+                      ><input
+                        type="radio"
+                        name="Gender"
+                        value="female"
+                        id="Gender_1"
+                      />Female</label
+                    >
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td class="leftable"></td>
+                <td id="tdjs" height="28"></td>
+              </tr>
+              <tr>
+                <td height="78" class="leftable">E-mail</td>
+                <td  width="40%">
+                  <input id="inptemail" type="text" /><i
+                    class="fas fa-times-circle fa-lg"
+                    id="cemail"
+                  ></i
+                  ><i class="fas fa-check-circle fa-lg" id="yemail"></i>
+                </td>
+              </tr>
+              <tr>
+                <td class="leftable"></td>
+                <td id="tdemail" height="28"></td>
+              </tr>
+              <tr>
+                <td height="78" class="leftable">Password</td>
+                <td  width="40%">
+                  <input id="inptpsw" type="password" /><i
+                    class="fas fa-times-circle fa-lg"
+                    id="cpsw"
+                  ></i
+                  ><i class="fas fa-check-circle fa-lg" id="ypsw"></i>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td id="tdpsw" height="28"></td>
+              </tr>
+              <tr>
+                <td height="78" class="leftable">Password Check</td>
+                <td  width="40%">
+                  <input id="inptpswchck" type="password" /><i
+                    class="fas fa-times-circle fa-lg"
+                    id="cpswchck"
+                  ></i
+                  ><i class="fas fa-check-circle fa-lg" id="ypswchck"></i>
+                </td>
+              </tr>
+              <tr>
+                <td class="leftable"></td>
+                <td id="tdpswchck" height="28"></td>
+              </tr>
+              
+
+              <tr>
+                <td class="leftable" colspan="3" height="50" width="40%">
+                  <input
+                    type="submit"
+                    value="Sign Up"
+                    id="signin"
+                    onclick="validate();"
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <a href="index.html">Calculator</a>
+    </div>
+    <script>
+        const validation = document.getElementById("tdjs");
+        const inputname = document.getElementById("inptname");
+        const inputsurname = document.getElementById("inptsurname");
+        const inputemail = document.getElementById("inptemail");
+        const inputpsw = document.getElementById("inptpsw");
+        const inputpswchck = document.getElementById("inptpswchck");
+        const inputfighter = document.getElementById("inptfvfighter");
+        const inputevent = document.getElementById("inptfvevent");
+        const tdname = document.getElementById("tdname");
+        const tdsurname = document.getElementById("tdsurname");
+        const tdemail = document.getElementById("tdemail");
+        const tdpsw = document.getElementById("tdpsw");
+        const tdpswchck = document.getElementById("tdpswchck");
+        const cname = document.getElementById("cname");
+        const yname = document.getElementById("yname");
+        const csurname = document.getElementById("csurname");
+        const ysurname = document.getElementById("ysurname");
+        const cemail = document.getElementById("cemail");
+        const yemail = document.getElementById("yemail");
+        const cpsw = document.getElementById("cpsw");
+        const ypsw = document.getElementById("ypsw");
+        const cpswchck = document.getElementById("cpswchck");
+        const ypswchck = document.getElementById("ypswchck");
+
+        function validate() {
+            if (inputname.value == "" || inputname.value == undefined) {
+                inputname.style.borderColor = "red";
+                tdname.innerHTML = "Please enter a name.";
+                cname.style.visibility = "visible";
+                yname.style.visibility = "hidden";
+            } else {
+                inputname.style.borderColor = "green";
+                tdname.innerHTML = "";
+                cname.style.visibility = "hidden";
+                yname.style.visibility = "visible";
+            }
+
+            if (inputsurname.value == "" || inputsurname.value == null) {
+                inputsurname.style.borderColor = "red";
+                tdsurname.innerHTML = "Please enter a surname.";
+                csurname.style.visibility = "visible";
+                ysurname.style.visibility = "hidden";
+            } else {
+                inputsurname.style.borderColor = "green";
+                tdsurname.innerHTML = "";
+                csurname.style.visibility = "hidden";
+                ysurname.style.visibility = "visible";
+            }
+
+            if (inputemail.value == "" || inputemail.value == null) {
+                inputemail.style.borderColor = "red";
+                tdemail.innerHTML = "Please enter an E-mail.";
+                cemail.style.visibility = "visible";
+                yemail.style.visibility = "hidden";
+            } else {
+                inputemail.style.borderColor = "green";
+                tdemail.innerHTML = "";
+                cemail.style.visibility = "hidden";
+                yemail.style.visibility = "visible";
+            }
+            
+            if (inputpswchck.value == inputpsw.value) {
+                inputpswchck.style.borderColor = "green";
+                tdpswchck.innerHTML = "";
+                tdpsw.innerHTML = "";
+                cpswchck.style.visibility = "hidden";
+                ypswchck.style.visibility = "visible";
+                cpsw.style.visibility = "hidden";
+                ypsw.style.visibility = "visible";
+            }
+
+            if (inputpsw.value == "" || inputpsw.value == null) {
+                inputpsw.style.borderColor = "red";
+                tdpsw.innerHTML = "Please enter a password.";
+                cpsw.style.visibility = "visible";
+                ypsw.style.visibility = "hidden";
+            } else {
+                inputpsw.style.borderColor = "green";
+                tdpsw.innerHTML = "";
+                cpsw.style.visibility = "hidden";
+                ypsw.style.visibility = "visible";
+            }
+
+
+            if (inputpswchck.value == "" || inputpswchck.value == null) {
+                inputpswchck.style.borderColor = "red";
+                tdpswchck.innerHTML = "Please enter the password check.";
+                cpswchck.style.visibility = "visible";
+                ypswchck.style.visibility = "hidden";
+            } else {
+                inputpswchck.style.borderColor = "green";
+                tdpswchck.innerHTML = "";
+                cpswchck.style.visibility = "hidden";
+                ypswchck.style.visibility = "visible";
+            }
+
+            if (inputpswchck.value != inputpsw.value) {
+                inputpswchck.style.borderColor = "red";
+                inputpsw.style.borderColor = "red";
+                tdpswchck.innerHTML = "Passwords dont match.";
+                tdpsw.innerHTML = "Passwords dont match.";
+                cpswchck.style.visibility = "visible";
+                ypswchck.style.visibility = "hidden";
+                cpsw.style.visibility = "visible";
+                ypsw.style.visibility = "hidden";
+            } 
+            
+            
+            
+        }
+    </script>
+    <script src="https://kit.fontawesome.com/696e445f5b.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
